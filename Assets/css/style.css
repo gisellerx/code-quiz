@@ -10,4 +10,6 @@ header h3 {
 
 header p {
     width: 50%;
+    display: flex;
+    justify-content: end;
 }
