@@ -2,7 +2,7 @@ var startBtn = document.getElementById("start-btn")
 var introSectionEl = document.getElementById("intro-section")
 var timerEl = document.getElementById("timer")
 var questionSectionEl = document.getElementById("question-section")
-var timeEl = document.getElementById("title")
+var titleEl = document.getElementById("title")
 
 var questionsArray = [
     {
@@ -45,10 +45,11 @@ function startQuiz() {
     introSectionEl.setAttribute("class", "hide")
     questionSectionEl.removeAttribute("class")
     countDown()
+    setIntervalId = setInterval(countDown, 1000)
 }
 
 function countDown() {
-
+    timerEl.textContent = timeLeft-- 
 }
 
 startBtn.addEventListener("click", startQuiz)
