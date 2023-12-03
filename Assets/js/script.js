@@ -58,15 +58,24 @@ function countDown() {
     }
 }
 
-function showQuestion(index) {
+function showQuestions() {
     titleEl.textContent.questionsArray[questionIndex].title
 
     choicesEl[0].textContent = questionsArray[questionIndex].choices[0]
     choicesEl[1].textContent = questionsArray[questionIndex].choices[1]
     choicesEl[2].textContent = questionsArray[questionIndex].choices[2]
     choicesEl[3].textContent = questionsArray[questionIndex].choices[3]
-    choicesEl[4].textContent = questionsArray[questionIndex].choices[4]
     
 }
 
+function nextQuestion(event) {
+    var currentElement = event.target
+    if (currentElement.matches("button")) {
+        questionIndex++
+        showQuestions()
+    }
+}
+
 startBtn.addEventListener("click", startQuiz)
+
+questionSectionEl.addEventListener("click", nextQuestion)
