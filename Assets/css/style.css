@@ -21,3 +21,11 @@ header p {
 #intro-section {
     text-align: center;
 }
+
+#question-section {
+    text-align: center;
+}
+
+#question-section ul {
+    list-style: none;
+}
