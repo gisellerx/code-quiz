@@ -3,7 +3,10 @@ var introSectionEl = document.getElementById("intro-section")
 var timerEl = document.getElementById("timer")
 var questionSectionEl = document.getElementById("question-section")
 var titleEl = document.getElementById("title")
+// Have to use querySelectorAll bc there is more than one
+var choicesEl = document.querySelectorAll(".choices")
 
+var questionIndex = 0
 var questionsArray = [
     {
         title: "q 1",
@@ -53,6 +56,10 @@ function countDown() {
     if (timeLeft === 0) {
         clearInterval(setIntervalId)
     }
+}
+
+function showQuestion(index) {
+    titleEl.textContent.questionsArray[questionIndex].title
 }
 
 startBtn.addEventListener("click", startQuiz)
