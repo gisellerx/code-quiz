@@ -2,6 +2,7 @@ var startBtn = document.getElementById("start-btn")
 var introSectionEl = document.getElementById("intro-section")
 var timerEl = document.getElementById("timer")
 var questionSectionEl = document.getElementById("question-section")
+var choicesEl = document.getElementById("choices")
 var titleEl = document.getElementById("title")
 // Have to use querySelectorAll bc there is more than one
 var choicesEl = document.querySelectorAll(".choices")
@@ -74,6 +75,16 @@ function nextQuestion(event) {
     if (currentElement.matches("button")) {
         questionIndex++
         showQuestions()
+    }
+
+    if (questionIndex === questionsArray.length) {
+        clearInterval(setIntervalId)
+    }
+
+    if (currentElement.textContent === questionsArray[questionIndex].answer) {
+        alert("Correct!")
+    } else {
+        alert("Wrong!")
     }
 }
 
