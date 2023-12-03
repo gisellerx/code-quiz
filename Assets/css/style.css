@@ -18,7 +18,7 @@ header p {
     display: none;
 }
 
-#intro-section, #question-section, #initial-section {
+#intro-section, #question-section, #initial-section, #highscore-section {
     text-align: center;
 }
 
