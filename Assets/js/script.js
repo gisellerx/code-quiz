@@ -46,9 +46,9 @@ var setIntervalId = 0;
     
 function startQuiz() {
     introSectionEl.setAttribute("class", "hide")
-    questionSectionEl.removeAttribute("class")
-    countDown()
+    questionSectionEl.setAttribute("class", "")
     setIntervalId = setInterval(countDown, 1000)
+    showQuestions()
 }
 
 function countDown() {
@@ -59,7 +59,8 @@ function countDown() {
 }
 
 function showQuestions() {
-    titleEl.textContent.questionsArray[questionIndex].title
+    var currentQuestion = questionsArray[questionIndex]
+    titleEl.textContent = currentQuestion.title
 
     choicesEl[0].textContent = questionsArray[questionIndex].choices[0]
     choicesEl[1].textContent = questionsArray[questionIndex].choices[1]
