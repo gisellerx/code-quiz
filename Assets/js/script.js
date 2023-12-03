@@ -80,3 +80,7 @@ function nextQuestion(event) {
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
+
+
+
+
