@@ -38,7 +38,8 @@ var questionsArray = [
 // Data structure for storing questions and choices?
 
 function startQuiz() {
-    introSectionEl.classList.add("hide")
+    introSectionEl.setAttribute("class", "hide")
+    questionSectionEl.removeAttribute("class")
 }
 
 startBtn.addEventListener("click", startQuiz)
