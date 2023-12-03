@@ -49,7 +49,10 @@ function startQuiz() {
 }
 
 function countDown() {
-    timerEl.textContent = timeLeft-- 
+    timerEl.textContent = timeLeft--
+    if (timeLeft === 0) {
+        clearInterval(setIntervalId)
+    }
 }
 
 startBtn.addEventListener("click", startQuiz)
