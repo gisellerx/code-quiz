@@ -32,14 +32,23 @@ var questionsArray = [
     }
 ]
 
+var timeLeft = questionsArray.length * 15
+
 // Hide intro section
 // Start the timer
 // Show the questions
 // Data structure for storing questions and choices?
 
+var setIntervalId = 0;
+    
 function startQuiz() {
     introSectionEl.setAttribute("class", "hide")
     questionSectionEl.removeAttribute("class")
+    countDown()
+}
+
+function countDown() {
+
 }
 
 startBtn.addEventListener("click", startQuiz)
