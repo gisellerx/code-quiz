@@ -17,3 +17,7 @@ header p {
 .hide {
     display: none;
 }
+
+#intro-section {
+    text-align: center;
+}
