@@ -9,29 +9,29 @@ var choicesEl = document.querySelectorAll(".choices")
 var questionIndex = 0
 var questionsArray = [
     {
-        title: "q 1",
-        choices: ["a", "b", "c", "d"],
-        answer: "d"
+        title: "Commonly used data types DO NOT include:",
+        choices: ["a. strings", "b. booleans", "c. alerts", "d. numbers"],
+        answer: "c. alerts"
     },
     {
-        title: "q 2",
-        choices: ["a", "b", "c", "d"],
-        answer: "d"
+        title: "The condition in an if / else statement is enclosed within _____.",
+        choices: ["a. numbers and strings", "b. curly brackets", "c. parentheses", "d. square brackets"],
+        answer: "c. parentheses"
     },
     {
-        title: "q 3",
-        choices: ["a", "b", "c", "d"],
-        answer: "d"
+        title: "Arrays in javascript can be used to store _____.",
+        choices: ["a. numbers and strings", "b. other arrays", "c. booleans", "d. all of the above"],
+        answer: "d. all of the above"
     },
     {
-        title: "q 4",
-        choices: ["a", "b", "c", "d"],
-        answer: "d"
+        title: "String values must be enclosed within _____ when being assigned to variables.",
+        choices: ["1.commas", "2.curly brackets", "3.quotes", "4.parentheses"],
+        answer: "2.curly brackets"
     },
     {
-        title: "q 5",
-        choices: ["a", "b", "c", "d"],
-        answer: "d"
+        title: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: ["1.Javascript", "2.terminal/bash", "3.for loops", "4.console.log"],
+        answer: "4.console.log"
     }
 ]
 
