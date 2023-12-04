@@ -2,9 +2,12 @@ var startBtn = document.getElementById("start-btn")
 var introSectionEl = document.getElementById("intro-section")
 var timerEl = document.getElementById("timer")
 var questionSectionEl = document.getElementById("question-section")
+var initialSectionEl = document.getElementById("initial-section")
 var titleEl = document.getElementById("title")
 // Have to use querySelectorAll bc there is more than one
 var choicesEl = document.querySelectorAll(".choices")
+
+var scoreEl = 0
 
 var questionIndex = 0
 var questionsArray = [
@@ -42,7 +45,7 @@ var timeLeft = questionsArray.length * 15
 // Show the questions
 // Data structure for storing questions and choices?
 
-var setIntervalId = 0;
+var setIntervalId = 0
     
 function startQuiz() {
     introSectionEl.setAttribute("class", "hide")
@@ -54,8 +57,13 @@ function startQuiz() {
 function countDown() {
     timerEl.textContent = timeLeft--
     if (timeLeft === 0) {
-        clearInterval(setIntervalId)
     }
+}
+
+function gameOver() {
+    clearInterval(setIntervalId)
+    initialSectionEl.removeAttribute("class")
+    initialSectionEl.textContent = `score:  + ${scoreEl}`
 }
 
 function showQuestions() {
@@ -83,7 +91,7 @@ function nextQuestion(event) {
 
     if (currentElement.textContent === questionsArray[questionIndex].answer) {
         alert("Correct!")
-        score +=1
+        scoreEl +=1
     } else {
         timeLeft -= 10
         alert("Wrong!")
@@ -91,7 +99,6 @@ function nextQuestion(event) {
 }
 
 startBtn.addEventListener("click", startQuiz)
-
 questionSectionEl.addEventListener("click", nextQuestion)
 
 
