@@ -117,18 +117,13 @@ function nextQuestion(event) {
 }
 
 var initials = {}
+var highscore = "highscore"
 
 function saveScore() {
     finalscoreEl.setAttribute("class", "hide")
     initialSectionEl.setAttribute("class", "hide")
     highscoreEl.removeAttribute("class")
-
-    var initials = initialsInput.value.trim()
-    var finalScore = {
-        initials: initials,
-        score: scoreEl,
-        time: timeLeft
-    }
+    localStorage.setItem(highscore, JSON.stringify(initials, finalscoreEl.textContent, timeLeft))
 }
 
 startBtn.addEventListener("click", startQuiz)
