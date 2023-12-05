@@ -115,9 +115,22 @@ function nextQuestion(event) {
     }
 }
 
+var initials = {}
+
+function saveScore() {
+    var initials = initialsInput.value.trim()
+    var finalScore = {
+        initials: initials,
+        score: scoreEl,
+        time: timeLeft
+    }
+}
+
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
+
+initialSectionEl.addEventListener("click", saveScore)
 
 
 
