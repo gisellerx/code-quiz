@@ -57,24 +57,28 @@ function startQuiz() {
 function countDown() {
     timerEl.textContent = timeLeft--
     if (timeLeft === 0) {
+        gameOver()
     }
 }
 
 function gameOver() {
     clearInterval(setIntervalId)
     initialSectionEl.removeAttribute("class")
-    initialSectionEl.textContent = `score:  + ${scoreEl}`
+    initialSectionEl.textContent = `score:   ${scoreEl}`
+    questionSectionEl.setAttribute("class", "hide")
 }
 
 function showQuestions() {
     var currentQuestion = questionsArray[questionIndex]
-    titleEl.textContent = currentQuestion.title
+    if (currentQuestion) {
+        titleEl.textContent = currentQuestion.title
 
-    choicesEl[0].textContent = questionsArray[questionIndex].choices[0]
-    choicesEl[1].textContent = questionsArray[questionIndex].choices[1]
-    choicesEl[2].textContent = questionsArray[questionIndex].choices[2]
-    choicesEl[3].textContent = questionsArray[questionIndex].choices[3]
-    
+        choicesEl[0].textContent = questionsArray[questionIndex].choices[0]
+        choicesEl[1].textContent = questionsArray[questionIndex].choices[1]
+        choicesEl[2].textContent = questionsArray[questionIndex].choices[2]
+        choicesEl[3].textContent = questionsArray[questionIndex].choices[3]
+        choicesEl[4].textContent = questionsArray[questionIndex].choices[4]
+    }
 }
 
 function nextQuestion(event) {
@@ -86,7 +90,8 @@ function nextQuestion(event) {
 
     if (questionIndex === questionsArray.length) {
         clearInterval(setIntervalId)
-        introSectionEl.setAttribute("class", "")
+        initialSectionEl.setAttribute("class", "")
+        questionSectionEl.setAttribute("class", "hide")
     }
 
     if (currentElement.textContent === questionsArray[questionIndex].answer) {
