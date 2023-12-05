@@ -6,6 +6,7 @@ var initialSectionEl = document.getElementById("initial-section")
 var titleEl = document.getElementById("title")
 // Have to use querySelectorAll bc there is more than one
 var choicesEl = document.querySelectorAll(".choices")
+var highscoreEl = document.getElementById("highscore-section")
 
 var scoreEl = 0
 var finalscoreEl = document.getElementById("finalscore-section")
@@ -118,6 +119,10 @@ function nextQuestion(event) {
 var initials = {}
 
 function saveScore() {
+    finalscoreEl.setAttribute("class", "hide")
+    initialSectionEl.setAttribute("class", "hide")
+    highscoreEl.removeAttribute("class")
+
     var initials = initialsInput.value.trim()
     var finalScore = {
         initials: initials,
@@ -130,7 +135,7 @@ startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
 
-initialSectionEl.addEventListener("click", saveScore)
+initialSectionEl.addEventListener("onclick", saveScore)
 
 
 
