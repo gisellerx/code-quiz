@@ -64,7 +64,10 @@ function countDown() {
 function gameOver() {
     clearInterval(setIntervalId)
     initialSectionEl.removeAttribute("class")
-    initialSectionEl.textContent = `score:  + ${scoreEl}`
+    // discovered initial section will work for keeping score but breaks ability to go to initial section 
+    // initialSectionEl.textContent = `score:  + ${scoreEl}`
+    scoreEl.textContent = score + "/" + questionsArray.length
+    questionSectionEl.setAttribute("class", "hide")
 }
 
 function showQuestions() {
@@ -84,16 +87,22 @@ function showQuestions() {
 function nextQuestion(event) {
     var currentElement = event.target
     if (currentElement.matches("button")) {
-        questionIndex++
-        showQuestions()
+        if (questionIndex < questionsArray.length - 1) {
+            questionIndex++
+            showQuestions()
+        } else {
+            gameOver()
+            initialSectionEl.setAttribute("class", "")
+            questionSectionEl.setAttribute("class", "hide")
+        }
     }
 
-    if (questionIndex === questionsArray.length) {
-        clearInterval(setIntervalId)
-        // introSectionEl.setAttribute("class", "")
-        initialSectionEl.setAttribute("class", "")
-        questionSectionEl.setAttribute("class", "hide")
-    }
+    // if (questionIndex === questionsArray.length) {
+    //     clearInterval(setIntervalId)
+    //     // introSectionEl.setAttribute("class", "")
+    //     initialSectionEl.setAttribute("class", "")
+    //     questionSectionEl.setAttribute("class", "hide")
+    // }
 
     if (currentElement.textContent === questionsArray[questionIndex].answer) {
         alert("Correct!")
