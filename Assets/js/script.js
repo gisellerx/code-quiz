@@ -142,8 +142,16 @@ function saveScore() {
 
     finalscore.splice(5)
 
+
+    // temporary solution to show highscores in highscores section
     listEl.innerHTML = recentScore.user + " score: " + recentScore.score + " time: " + recentScore.time
-    
+
+    // Attempt to make scores more like a list. Currently not functioning
+    // listEl.innerHTML = recentScore
+    //     .map(recentScore => {
+    //         return `<li>${recentScore.user} + " " + ${recentScore.score} + " " + ${recentScore.time}</li>`
+    //     })
+    //     .join("")
 }
 
 // View Highscores still doesn't work
