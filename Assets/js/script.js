@@ -142,8 +142,8 @@ function saveScore() {
 
     finalscore.splice(5)
 
-    listEl.innerHTML = recentScore.user + " score: " + recentScore.score + " time: " + recentScore.time 
-
+    listEl.innerHTML = recentScore.user + " score: " + recentScore.score + " time: " + recentScore.time
+    
 }
 
 // View Highscores still doesn't work
@@ -152,6 +152,11 @@ function saveScore() {
 //     highscoreEl.removeAttribute("class")
 // }
 
+function deleteScores() {
+    localStorage.clear()
+    location.reload()
+}
+
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
@@ -159,6 +164,8 @@ questionSectionEl.addEventListener("click", nextQuestion)
 initialSectionEl.addEventListener("onclick", saveScore)
 
 // introSectionEl.addEventListener("click", viewHighscores)
+
+highscoreEl.addEventListener("onclick", deleteScores)
 
 
 
