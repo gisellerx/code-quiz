@@ -7,6 +7,7 @@ var titleEl = document.getElementById("title")
 // Have to use querySelectorAll bc there is more than one
 var choicesEl = document.querySelectorAll(".choices")
 var highscoreEl = document.getElementById("highscore-section")
+var inputValueEl = document.getElementById("initial-input")
 
 var scoreEl = 0
 var finalscoreEl = document.getElementById("finalscore-section")
@@ -117,13 +118,29 @@ function nextQuestion(event) {
 }
 
 var initials = {}
-var highscore = "highscore"
+var MAX_SCORE = 5
 
 function saveScore() {
     finalscoreEl.setAttribute("class", "hide")
     initialSectionEl.setAttribute("class", "hide")
     highscoreEl.removeAttribute("class")
-    localStorage.setItem(highscore, JSON.stringify(initials, finalscoreEl.textContent, timeLeft))
+
+    if (initials.length !== 0) {
+        var finalscore = JSON.parse(window.localStorage.getItem('finalscore')) || [];
+    var recentScore = {
+        user: inputValueEl.value,
+        score: scoreEl,
+        time: timeLeft
+    }
+
+    }
+    finalscore.push(recentScore)
+    window.localStorage.setItem('finalscore', JSON.stringify(finalscore))
+
+    finalscore.sort ((a, b) => b.recentScore - a.recentScore)
+
+    finalscore.splice(5)
+
 }
 
 startBtn.addEventListener("click", startQuiz)
@@ -131,6 +148,8 @@ startBtn.addEventListener("click", startQuiz)
 questionSectionEl.addEventListener("click", nextQuestion)
 
 initialSectionEl.addEventListener("onclick", saveScore)
+
+
 
 
 
