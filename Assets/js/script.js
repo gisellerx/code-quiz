@@ -10,6 +10,7 @@ var highscoreEl = document.getElementById("highscore-section")
 var inputValueEl = document.getElementById("initial-input")
 var listEl = document.getElementById("list")
 
+// starts score at 0
 var scoreEl = 0
 var finalscoreEl = document.getElementById("finalscore-section")
 
@@ -44,13 +45,11 @@ var questionsArray = [
 
 var timeLeft = questionsArray.length * 15
 
-// Hide intro section
-// Start the timer
-// Show the questions
-// Data structure for storing questions and choices?
-
 var setIntervalId = 0;
     
+// hides intro section
+// removes hide class from question section
+// starts the countdown
 function startQuiz() {
     introSectionEl.setAttribute("class", "hide")
     questionSectionEl.setAttribute("class", "")
@@ -58,6 +57,8 @@ function startQuiz() {
     showQuestions()
 }
 
+// Timeleft variable set to lose by 1 every second, and at end of countdown, triggers gameOver()
+// function countdown is called by setIntervalId, which is in the startQuiz() function
 function countDown() {
     timerEl.textContent = timeLeft--
     if (timeLeft === 0) {
@@ -65,18 +66,28 @@ function countDown() {
     }
 }
 
+// removes hide class from initial section
+// removes hide class from finalscoreEl
+// removes hide class from question section
+// calculates and reveals score in finalscore section
 function gameOver() {
     clearInterval(setIntervalId)
     initialSectionEl.removeAttribute("class")
     finalscoreEl.removeAttribute("class")
+    // TA helped with this section for the scoreEl
     finalscoreEl.textContent = `Your final score is:   ${scoreEl}`
     questionSectionEl.setAttribute("class", "hide")
     scoreEl.textContent = score + "/" + questionsArray.length
 
 }
 
+// Checks for questions from the questions array using questionIndex, and checks if it is not null
+// If not null, next question needs to be shown
+// Title of question is set using titleEl
+// Code loops through choices and sets textContent of each choice to corresponding choice in the Array
 function showQuestions() {
     var currentQuestion = questionsArray[questionIndex]
+    // TA helped with this section for currentQuestion != null
     if (currentQuestion != null) {
         titleEl.textContent = currentQuestion.title
 
@@ -120,6 +131,10 @@ function nextQuestion(event) {
 
 var initials = {}
 
+
+// For local storage section, used video guide from James Q Quick youtube video to help improvise the code
+// https://youtu.be/jfOv18lCMmw?si=AWU3sppIrLKhg7Xh
+// https://youtu.be/jfOv18lCMmw?si=HGWVAKrr1AtDLK68 
 function saveScore() {
     finalscoreEl.setAttribute("class", "hide")
     initialSectionEl.setAttribute("class", "hide")
