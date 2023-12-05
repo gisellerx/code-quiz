@@ -8,6 +8,7 @@ var titleEl = document.getElementById("title")
 var choicesEl = document.querySelectorAll(".choices")
 var highscoreEl = document.getElementById("highscore-section")
 var inputValueEl = document.getElementById("initial-input")
+var listEl = document.getElementById("list")
 
 var scoreEl = 0
 var finalscoreEl = document.getElementById("finalscore-section")
@@ -118,7 +119,6 @@ function nextQuestion(event) {
 }
 
 var initials = {}
-var MAX_SCORE = 5
 
 function saveScore() {
     finalscoreEl.setAttribute("class", "hide")
@@ -126,12 +126,13 @@ function saveScore() {
     highscoreEl.removeAttribute("class")
 
     if (initials.length !== 0) {
-        var finalscore = JSON.parse(window.localStorage.getItem('finalscore')) || [];
-    var recentScore = {
-        user: inputValueEl.value,
-        score: scoreEl,
-        time: timeLeft
-    }
+        var finalscore = JSON.parse(window.localStorage.getItem('finalscore')) || []
+
+        var recentScore = {
+            user: inputValueEl.value,
+            score: scoreEl,
+            time: timeLeft
+        }
 
     }
     finalscore.push(recentScore)
@@ -141,13 +142,23 @@ function saveScore() {
 
     finalscore.splice(5)
 
+    listEl.innerHTML = recentScore.user + " score: " + recentScore.score + " time: " + recentScore.time 
+
 }
+
+// View Highscores still doesn't work
+// function viewHighscores() {
+//     introSectionEl.setAttribute("class", "hide")
+//     highscoreEl.removeAttribute("class")
+// }
 
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
 
 initialSectionEl.addEventListener("onclick", saveScore)
+
+// introSectionEl.addEventListener("click", viewHighscores)
 
 
 
