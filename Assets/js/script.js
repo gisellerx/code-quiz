@@ -7,6 +7,8 @@ var titleEl = document.getElementById("title")
 // Have to use querySelectorAll bc there is more than one
 var choicesEl = document.querySelectorAll(".choices")
 
+var scoreEl = 0
+
 var questionIndex = 0
 var questionsArray = [
     {
@@ -55,8 +57,14 @@ function startQuiz() {
 function countDown() {
     timerEl.textContent = timeLeft--
     if (timeLeft === 0) {
-        clearInterval(setIntervalId)
+        gameOver()
     }
+}
+
+function gameOver() {
+    clearInterval(setIntervalId)
+    initialSectionEl.removeAttribute("class")
+    initialSectionEl.textContent = `score:  + ${scoreEl}`
 }
 
 function showQuestions() {
@@ -89,7 +97,7 @@ function nextQuestion(event) {
 
     if (currentElement.textContent === questionsArray[questionIndex].answer) {
         alert("Correct!")
-        score +=1
+        scoreEl +=1
     } else {
         timeLeft -= 10
         alert("Wrong!")
