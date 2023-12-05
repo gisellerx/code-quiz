@@ -70,9 +70,9 @@ function gameOver() {
 
 function showQuestions() {
     var currentQuestion = questionsArray[questionIndex]
-    if (currentQuestion) {
+    if (currentQuestion != null) {
         titleEl.textContent = currentQuestion.title
-
+        
         choicesEl[0].textContent = questionsArray[questionIndex].choices[0]
         choicesEl[1].textContent = questionsArray[questionIndex].choices[1]
         choicesEl[2].textContent = questionsArray[questionIndex].choices[2]
@@ -94,9 +94,12 @@ function nextQuestion(event) {
         questionSectionEl.setAttribute("class", "hide")
     }
 
+
+// Alerts are not working now, must fix later
     if (currentElement.textContent === questionsArray[questionIndex].answer) {
         alert("Correct!")
         scoreEl +=1
+        console.log(scoreEl)
     } else {
         timeLeft -= 10
         alert("Wrong!")
