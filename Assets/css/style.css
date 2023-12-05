@@ -74,7 +74,7 @@ button:hover {
     display: none;
 }
 
-#intro-section, #question-section, #initial-section, #highscore-section {
+#intro-section, #question-section, #initial-section, #finalscore-section, #highscore-section {
     text-align: center;
 }
 

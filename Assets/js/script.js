@@ -8,6 +8,7 @@ var titleEl = document.getElementById("title")
 var choicesEl = document.querySelectorAll(".choices")
 
 var scoreEl = 0
+var finalscoreEl = document.getElementById("finalscore-section")
 
 var questionIndex = 0
 var questionsArray = [
@@ -64,10 +65,11 @@ function countDown() {
 function gameOver() {
     clearInterval(setIntervalId)
     initialSectionEl.removeAttribute("class")
-    // discovered initial section will work for keeping score but breaks ability to go to initial section 
-    // initialSectionEl.textContent = `score:  + ${scoreEl}`
-    scoreEl.textContent = score + "/" + questionsArray.length
+    finalscoreEl.removeAttribute("class")
+    finalscoreEl.textContent = `Your final score is:   ${scoreEl}`
     questionSectionEl.setAttribute("class", "hide")
+    scoreEl.textContent = score + "/" + questionsArray.length
+
 }
 
 function showQuestions() {
