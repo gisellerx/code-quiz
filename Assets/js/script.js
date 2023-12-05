@@ -7,8 +7,6 @@ var titleEl = document.getElementById("title")
 // Have to use querySelectorAll bc there is more than one
 var choicesEl = document.querySelectorAll(".choices")
 
-var scoreEl = 0
-
 var questionIndex = 0
 var questionsArray = [
     {
@@ -45,7 +43,7 @@ var timeLeft = questionsArray.length * 15
 // Show the questions
 // Data structure for storing questions and choices?
 
-var setIntervalId = 0
+var setIntervalId = 0;
     
 function startQuiz() {
     introSectionEl.setAttribute("class", "hide")
@@ -57,28 +55,22 @@ function startQuiz() {
 function countDown() {
     timerEl.textContent = timeLeft--
     if (timeLeft === 0) {
-        gameOver()
+        clearInterval(setIntervalId)
     }
-}
-
-function gameOver() {
-    clearInterval(setIntervalId)
-    initialSectionEl.removeAttribute("class")
-    initialSectionEl.textContent = `score:   ${scoreEl}`
-    questionSectionEl.setAttribute("class", "hide")
 }
 
 function showQuestions() {
     var currentQuestion = questionsArray[questionIndex]
     if (currentQuestion != null) {
         titleEl.textContent = currentQuestion.title
-        
+
         choicesEl[0].textContent = questionsArray[questionIndex].choices[0]
         choicesEl[1].textContent = questionsArray[questionIndex].choices[1]
         choicesEl[2].textContent = questionsArray[questionIndex].choices[2]
         choicesEl[3].textContent = questionsArray[questionIndex].choices[3]
-        choicesEl[4].textContent = questionsArray[questionIndex].choices[4]
-    }
+        // final choice breaks alerts, so I've commented it out.
+        // choicesEl[4].textContent = questionsArray[questionIndex].choices[4]
+    } 
 }
 
 function nextQuestion(event) {
@@ -90,16 +82,14 @@ function nextQuestion(event) {
 
     if (questionIndex === questionsArray.length) {
         clearInterval(setIntervalId)
+        // introSectionEl.setAttribute("class", "")
         initialSectionEl.setAttribute("class", "")
         questionSectionEl.setAttribute("class", "hide")
     }
 
-
-// Alerts are not working now, must fix later
     if (currentElement.textContent === questionsArray[questionIndex].answer) {
         alert("Correct!")
-        scoreEl +=1
-        console.log(scoreEl)
+        score +=1
     } else {
         timeLeft -= 10
         alert("Wrong!")
@@ -107,6 +97,7 @@ function nextQuestion(event) {
 }
 
 startBtn.addEventListener("click", startQuiz)
+
 questionSectionEl.addEventListener("click", nextQuestion)
 
 
