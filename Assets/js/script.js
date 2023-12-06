@@ -1,3 +1,4 @@
+// Much of the initial code was made while following along to Professor Phil Lloyds video guide
 var startBtn = document.getElementById("start-btn")
 var introSectionEl = document.getElementById("intro-section")
 var timerEl = document.getElementById("timer")
@@ -15,6 +16,7 @@ var scoreEl = 0
 var finalscoreEl = document.getElementById("finalscore-section")
 
 var questionIndex = 0
+// these questions in the questions array are taken from the hw requirements example
 var questionsArray = [
     {
         title: "Commonly used data types DO NOT include:",
@@ -133,15 +135,16 @@ function nextQuestion(event) {
 
 var initials = {}
 
-
-// For local storage section, used video guide from James Q Quick youtube video to help improvise the code
-// https://youtu.be/jfOv18lCMmw?si=AWU3sppIrLKhg7Xh
-// https://youtu.be/jfOv18lCMmw?si=HGWVAKrr1AtDLK68 
+// function saveScore will send the user to the highscore page on click of the save button
+// saveScore is called 
 function saveScore() {
     finalscoreEl.setAttribute("class", "hide")
     initialSectionEl.setAttribute("class", "hide")
     highscoreEl.removeAttribute("class")
 
+    // For local storage section, used video guide from James Q Quick youtube video to help improvise the code
+    // https://youtu.be/jfOv18lCMmw?si=AWU3sppIrLKhg7Xh
+    // https://youtu.be/jfOv18lCMmw?si=HGWVAKrr1AtDLK68 
     if (initials.length !== 0) {
         var finalscore = JSON.parse(window.localStorage.getItem('finalscore')) || []
 

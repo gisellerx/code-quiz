@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="bg">
+        <!-- Much of the formatting here was done with the help of Phil Llloyds code quiz video guide  -->
         <header>
             <h3>View Highscores</h3>
 
@@ -19,25 +20,28 @@
             <section id="intro-section">
 
                 <h1>Coding Quiz</h1>
-
-                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!</p>
+                <!-- Code question content is from the hw requirement gifs -->
+                <p>Answer these code-related questions within the time limit. Wrong answers will penalize your score/time by 10 seconds!</p>
 
                 <button id="start-btn">Start Quiz</button>
 
             </section>
 
             <section id="question-section" class="hide">
-
+                <!-- question 1 and the choices shown here are temporary placeholders that would get replaced later -->
                 <h2 id="title">question 1</h2>
                 <ul>
                     <li><button class="choices">choice 1</button></li>
+
                     <li><button class="choices">choice 2</button></li>
+
                     <li><button class="choices">choice 3</button></li>
+
                     <li><button class="choices">choice 4</button></li>
                 </ul>
 
             </section>
-
+            <!-- Separated the final score from the initial-section because at the time the initial section was disappearing when trying to show the score at the end of the game  -->
             <section id="finalscore-section" class="hide">
 
                 <p>Your final score is <label for="" id="score"></label></p>
