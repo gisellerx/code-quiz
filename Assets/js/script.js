@@ -45,6 +45,8 @@ var questionsArray = [
     }
 ]
 
+// making timeLeft by legnth makes it more dynamic
+// length of array is 5, and 5 times 15 makes the timer 75 seconds 
 var timeLeft = questionsArray.length * 15
 
 var setIntervalId = 0;
@@ -166,7 +168,6 @@ function saveScore() {
 
     finalscore.splice(5)
 
-
     // temporary solution to show highscores in highscore section
     listEl.innerHTML = recentScore.user + " score: " + recentScore.score + " time: " + recentScore.time
 
@@ -184,11 +185,16 @@ function saveScore() {
 //     highscoreEl.removeAttribute("class")
 // }
 
+
+// onClick event is triggered when the clear highscores button is clicked, removes all scores from local storage
+// reloads page
 function deleteScores() {
     localStorage.clear()
     location.reload()
 }
 
+
+// onClick event is triggered when go back button is clicked, reloads page without clearing local storage
 function goBack() {
     location.reload()
 }

@@ -29,20 +29,19 @@
             </section>
 
             <section id="question-section" class="hide">
-                <!-- question 1 and the choices shown here are temporary placeholders that would get replaced later -->
-                <h2 id="title">question 1</h2>
+                <h2 id="title"></h2>
                 <ul>
-                    <li><button class="choices">choice 1</button></li>
+                    <li><button class="choices"></button></li>
 
-                    <li><button class="choices">choice 2</button></li>
+                    <li><button class="choices"></button></li>
 
-                    <li><button class="choices">choice 3</button></li>
+                    <li><button class="choices"></button></li>
 
-                    <li><button class="choices">choice 4</button></li>
+                    <li><button class="choices"></button></li>
                 </ul>
 
             </section>
-            <!-- Separated the final score from the initial-section because at the time the initial section was disappearing when trying to show the score at the end of the game with textContent  -->
+            <!-- Separated the final score from the initial-section because at the time the initial section was disappearing when trying to show the score at the end of the game with finalscoreEl.textContent = `Your final score is:   ${scoreEl}`  -->
             <section id="finalscore-section" class="hide">
 
                 <p>Your final score is <label for="" id="score"></label></p>
@@ -60,11 +59,16 @@
             <section id="highscore-section" class="hide">
 
                 <h3>Highscores</h3>
-                <!-- Similar issue to the finalscore-section, resolved in a slightly different way by adding an extra section within instead of outside of the highscore-section   -->
+                <!-- Similar issue to the finalscore-section, resolved in a slightly different way by adding an extra section within instead of outside of the highscore-section to show the final scores without losing the rest of the page  -->
                 <section id="list">
 
                     <ol>
-                        <li>PL-5</li>
+                        <!-- Intent is to make a list of 5, but only first score currently shows in the browser -->
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
                     </ol>
 
                 </section>
