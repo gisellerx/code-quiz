@@ -102,6 +102,10 @@ function showQuestions() {
     } 
 }
 
+// triggered when user clicks a button
+// checks if questionIndex is less than questionsArray.length - 1
+// if less than, it calls showQuestions(), which show the next question
+// otherwise, it calls gameOver() and the initial and question sections are removed
 function nextQuestion(event) {
     var currentElement = event.target
     if (currentElement.matches("button")) {
@@ -123,7 +127,7 @@ function nextQuestion(event) {
     // }
 
     // adds a point and alerts "Correct!" if answer matches the questionsArray[questionIndex].answer
-    // takes time 
+    // subtracts 10 seconds and alerts "Wrong!" if answer does not match the questionsArray[questionIndex].answer
     if (currentElement.textContent === questionsArray[questionIndex].answer) {
         alert("Correct!")
         scoreEl +=1
@@ -135,8 +139,8 @@ function nextQuestion(event) {
 
 var initials = {}
 
-// function saveScore will send the user to the highscore page on click of the save button
-// saveScore is called 
+// used to save the users intials, score, and time into local storage, and display it on the high scores page
+// ideally it will also sort the array by score, and limit it to 5 scores, but while local storage displays multiple scores, only 1 is currently displaying in the high score page
 function saveScore() {
     finalscoreEl.setAttribute("class", "hide")
     initialSectionEl.setAttribute("class", "hide")
