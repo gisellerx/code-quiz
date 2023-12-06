@@ -120,6 +120,8 @@ function nextQuestion(event) {
     //     questionSectionEl.setAttribute("class", "hide")
     // }
 
+    // adds a point and alerts "Correct!" if answer matches the questionsArray[questionIndex].answer
+    // takes time 
     if (currentElement.textContent === questionsArray[questionIndex].answer) {
         alert("Correct!")
         scoreEl +=1
@@ -158,7 +160,7 @@ function saveScore() {
     finalscore.splice(5)
 
 
-    // temporary solution to show highscores in highscores section
+    // temporary solution to show highscores in highscore section
     listEl.innerHTML = recentScore.user + " score: " + recentScore.score + " time: " + recentScore.time
 
     // Attempt to make scores more like a list. Currently not functioning
