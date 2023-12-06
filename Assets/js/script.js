@@ -185,6 +185,10 @@ function deleteScores() {
     location.reload()
 }
 
+function goBack() {
+    location.reload()
+}
+
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
@@ -194,6 +198,8 @@ initialSectionEl.addEventListener("onclick", saveScore)
 // introSectionEl.addEventListener("click", viewHighscores)
 
 highscoreEl.addEventListener("onclick", deleteScores)
+
+highscoreEl.addEventListener("onclick", goBack)
 
 
 
