@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./Assets/css/style.css">
 </head>
 <body>
+    <!-- div class for bg required to envelop the quiz in the gradient -->
     <div class="bg">
         <!-- Much of the formatting here was done with the help of Phil Llloyds code quiz video guide  -->
         <header>
@@ -41,7 +42,7 @@
                 </ul>
 
             </section>
-            <!-- Separated the final score from the initial-section because at the time the initial section was disappearing when trying to show the score at the end of the game  -->
+            <!-- Separated the final score from the initial-section because at the time the initial section was disappearing when trying to show the score at the end of the game with textContent  -->
             <section id="finalscore-section" class="hide">
 
                 <p>Your final score is <label for="" id="score"></label></p>
@@ -59,7 +60,7 @@
             <section id="highscore-section" class="hide">
 
                 <h3>Highscores</h3>
-
+                <!-- Similar issue to the finalscore-section, resolved in a slightly different way by adding an extra section within instead of outside of the highscore-section   -->
                 <section id="list">
 
                     <ol>
