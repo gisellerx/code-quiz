@@ -209,7 +209,7 @@ questionSectionEl.addEventListener("click", nextQuestion)
 initialEl.addEventListener("onclick", saveScore)
 
 // If function is turned on, empty numbered list is displayed instead of starting quiz
-introEl.addEventListener("click", viewHighscores)
+// introEl.addEventListener("click", viewHighscores)
 
 highscoreEl.addEventListener("onclick", deleteScores)
 
