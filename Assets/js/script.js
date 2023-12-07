@@ -1,9 +1,9 @@
 // Much of the initial code was made while following along to Professor Phil Lloyds video guide
 var startBtn = document.getElementById("start-btn")
-var introSectionEl = document.getElementById("intro-section")
+var introEl = document.getElementById("intro-section")
 var timerEl = document.getElementById("timer")
 var questionSectionEl = document.getElementById("question-section")
-var initialSectionEl = document.getElementById("initial-section")
+var initialEl = document.getElementById("initial-section")
 var titleEl = document.getElementById("title")
 // Have to use querySelectorAll bc there is more than one
 var choicesEl = document.querySelectorAll(".choices")
@@ -45,7 +45,7 @@ var questionsArray = [
     }
 ]
 
-// making timeLeft by legnth makes it more dynamic
+// making timeLeft by length makes it more dynamic
 // length of array is 5, and 5 times 15 makes the timer 75 seconds 
 var timeLeft = questionsArray.length * 15
 
@@ -55,7 +55,7 @@ var setIntervalId = 0;
 // removes hide class from question section
 // starts the countdown
 function startQuiz() {
-    introSectionEl.setAttribute("class", "hide")
+    introEl.setAttribute("class", "hide")
     questionSectionEl.setAttribute("class", "")
     setIntervalId = setInterval(countDown, 1000)
     showQuestions()
@@ -76,7 +76,7 @@ function countDown() {
 // calculates and reveals score in finalscore section
 function gameOver() {
     clearInterval(setIntervalId)
-    initialSectionEl.removeAttribute("class")
+    initialEl.removeAttribute("class")
     finalscoreEl.removeAttribute("class")
     // TA helped with this section for the scoreEl
     finalscoreEl.textContent = `Your final score is:   ${scoreEl}`
@@ -116,15 +116,15 @@ function nextQuestion(event) {
             showQuestions()
         } else {
             gameOver()
-            initialSectionEl.setAttribute("class", "")
+            initialEl.setAttribute("class", "")
             questionSectionEl.setAttribute("class", "hide")
         }
     }
 
     // if (questionIndex === questionsArray.length) {
     //     clearInterval(setIntervalId)
-    //     // introSectionEl.setAttribute("class", "")
-    //     initialSectionEl.setAttribute("class", "")
+    //     // introEl.setAttribute("class", "")
+    //     initialEl.setAttribute("class", "")
     //     questionSectionEl.setAttribute("class", "hide")
     // }
 
@@ -145,7 +145,7 @@ var initials = {}
 // ideally it will also sort the array by score, and limit it to 5 scores, but while local storage displays multiple scores, only 1 is currently displaying in the high score page
 function saveScore() {
     finalscoreEl.setAttribute("class", "hide")
-    initialSectionEl.setAttribute("class", "hide")
+    initialEl.setAttribute("class", "hide")
     highscoreEl.removeAttribute("class")
 
     // For local storage section, used video guide from James Q Quick youtube video to help improvise the code
@@ -180,10 +180,13 @@ function saveScore() {
 }
 
 // View Highscores still doesn't work
-// function viewHighscores() {
-//     introSectionEl.setAttribute("class", "hide")
-//     highscoreEl.removeAttribute("class")
-// }
+function viewHighscores() {
+    introEl.setAttribute("class", "hide")
+    highscoreEl.removeAttribute("class")
+    questionSectionEl.setAttribute("class", "hide")
+    finalscoreEl.setAttribute("class", "hide")
+    initialEl.setAttribute("class", "hide")
+}
 
 
 // onClick event is triggered when the clear highscores button is clicked, removes all scores from local storage
@@ -203,9 +206,10 @@ startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
 
-initialSectionEl.addEventListener("onclick", saveScore)
+initialEl.addEventListener("onclick", saveScore)
 
-// introSectionEl.addEventListener("click", viewHighscores)
+// If function is turned on, empty numbered list is displayed instead of starting quiz
+introEl.addEventListener("click", viewHighscores)
 
 highscoreEl.addEventListener("onclick", deleteScores)
 
