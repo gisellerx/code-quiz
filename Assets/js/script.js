@@ -53,17 +53,17 @@ var setIntervalId = 0;
     
 // hides intro section
 // removes hide class from question section
-// starts the countdown
+// starts the tickingClock
 function startQuiz() {
     introEl.setAttribute("class", "hide")
     questionSectionEl.setAttribute("class", "")
-    setIntervalId = setInterval(countDown, 1000)
+    setIntervalId = setInterval(tickingClock, 1000)
     showQuestions()
 }
 
-// Timeleft variable set to lose by 1 every second, and at end of countdown, triggers gameOver()
-// function countdown is called by setIntervalId, which is in the startQuiz() function
-function countDown() {
+// Timeleft variable set to lose by 1 every second, and at end of tickingClock, triggers gameOver()
+// function tickingClock is called by setIntervalId, which is in the startQuiz() function
+function tickingClock() {
     timerEl.textContent = timeLeft--
     if (timeLeft === 0) {
         gameOver()
@@ -108,7 +108,7 @@ function showQuestions() {
 // checks if questionIndex is less than questionsArray.length - 1
 // if less than, it calls showQuestions(), which show the next question
 // otherwise, it calls gameOver() and the initial and question sections are removed
-function nextQuestion(event) {
+function thankyouNext(event) {
     var currentElement = event.target
     if (currentElement.matches("button")) {
         if (questionIndex < questionsArray.length - 1) {
@@ -180,18 +180,18 @@ function saveScore() {
 }
 
 // View Highscores still doesn't work
-function viewHighscores() {
-    introEl.setAttribute("class", "hide")
-    highscoreEl.removeAttribute("class")
-    questionSectionEl.setAttribute("class", "hide")
-    finalscoreEl.setAttribute("class", "hide")
-    initialEl.setAttribute("class", "hide")
-}
+// function viewHighscores() {
+//     introEl.setAttribute("class", "hide")
+//     highscoreEl.removeAttribute("class")
+//     questionSectionEl.setAttribute("class", "hide")
+//     finalscoreEl.setAttribute("class", "hide")
+//     initialEl.setAttribute("class", "hide")
+// }
 
 
-// onClick event is triggered when the clear highscores button is clicked, removes all scores from local storage
+// onClick event is triggered when the clear history button is clicked, removes all scores from local storage
 // reloads page
-function deleteScores() {
+function byeBye() {
     localStorage.clear()
     location.reload()
 }
@@ -204,14 +204,14 @@ function goBack() {
 
 startBtn.addEventListener("click", startQuiz)
 
-questionSectionEl.addEventListener("click", nextQuestion)
+questionSectionEl.addEventListener("click", thankyouNext)
 
 initialEl.addEventListener("onclick", saveScore)
 
 // If function is turned on, empty numbered list is displayed instead of starting quiz
 // introEl.addEventListener("click", viewHighscores)
 
-highscoreEl.addEventListener("onclick", deleteScores)
+highscoreEl.addEventListener("onclick", byeBye)
 
 highscoreEl.addEventListener("onclick", goBack)
 
